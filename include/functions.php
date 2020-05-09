@@ -2,7 +2,7 @@
 /////////////////////////////////////////////////////////////////////////////////////
 // xbtit - Bittorrent tracker/frontend
 //
-// Copyright (C) 2004 - 2019  Btiteam
+// Copyright (C) 2004 - 2020  Btiteam
 //
 //    This file is part of xbtit.
 //
@@ -125,7 +125,7 @@ function load_css($css_name)
         return $STYLEURL.'/'.$css_name;
     }
 
-    return $BASEURL.'/style/xbtit_default/'.$css_name;
+    return $BASEURL.'/style/Xbtit_3.0/'.$css_name;
 }
 
 function load_template($tpl_name)
@@ -137,7 +137,7 @@ function load_template($tpl_name)
         return $STYLEPATH.'/'.$tpl_name;
     }
 
-    return $THIS_BASEPATH.'/style/xbtit_default/'.$tpl_name;
+    return $THIS_BASEPATH.'/style/templates/'.$tpl_name;
 }
 
 function load_language($mod_language_name)
@@ -260,7 +260,11 @@ function check_online($session_id, $location)
 {
     global $TABLE_PREFIX, $CURUSER;
 
-    session_id('xbtit');
+   session_name('xbtit');
+
+    session_start();
+
+    $session_id=session_id();
 
     $overOneMinute = (((isset($_SESSION['ONLINE_EXPIRE']) && time() > $_SESSION['ONLINE_EXPIRE']) || !isset($_SESSION['ONLINE_EXPIRE'])) ? true : false);
     $locationHasChanged = (((isset($_SESSION['ONLINE_LOCATION']) && $_SESSION['ONLINE_LOCATION'] != $location) || !isset($_SESSION['ONLINE_LOCATION'])) ? true : false);
@@ -493,7 +497,7 @@ function userlogin()
 
     unset($GLOBALS['CURUSER']);
 
-    session_id('xbtit');
+    session_name('xbtit');
 
     $ip = getip(); //$_SERVER["REMOTE_ADDR"];
     $nip = ip2long($ip);
@@ -512,10 +516,10 @@ function userlogin()
     if (isset($_SESSION['CURUSER']) && isset($_SESSION['CURUSER_EXPIRE'])) {
         if ($_SESSION['CURUSER_EXPIRE'] > time()) {
             if (!isset($STYLEPATH) || empty($STYLEPATH)) {
-                $STYLEPATH = ((is_null($_SESSION['CURUSER']['style_path'])) ? $THIS_BASEPATH.'/style/xbtit_default' : $_SESSION['CURUSER']['style_path']);
+                $STYLEPATH = ((is_null($_SESSION['CURUSER']['style_path'])) ? $THIS_BASEPATH.'/style/Xbtit_3.0' : $_SESSION['CURUSER']['style_path']);
             }
             if (!isset($STYLEURL) || empty($STYLEURL)) {
-                $STYLEURL = ((is_null($_SESSION['CURUSER']['style_url'])) ? $BASEURL.'/style/xbtit_default' : $_SESSION['CURUSER']['style_url']);
+                $STYLEURL = ((is_null($_SESSION['CURUSER']['style_url'])) ? $BASEURL.'/style/Xbtit_3.0' : $_SESSION['CURUSER']['style_url']);
             }
             if (!isset($STYLETYPE) || empty($STYLETYPE)) {
                 $STYLETYPE = ((is_null($_SESSION['CURUSER']['style_type'])) ? 3 : (int) 0 + $_SESSION['CURUSER']['style_type']);
@@ -670,10 +674,10 @@ function userlogin()
     }
 
     if (!isset($STYLEPATH) || empty($STYLEPATH)) {
-        $STYLEPATH = $THIS_BASEPATH.'/'.((is_null($row['style_url'])) ? 'style/xbtit_default' : $row['style_url']);
+        $STYLEPATH = $THIS_BASEPATH.'/'.((is_null($row['style_url'])) ? 'style/Xbtit_3.0' : $row['style_url']);
     }
     if (!isset($STYLEURL) || empty($STYLEURL)) {
-        $STYLEURL = $BASEURL.'/'.((is_null($row['style_url'])) ? 'style/xbtit_default' : $row['style_url']);
+        $STYLEURL = $BASEURL.'/'.((is_null($row['style_url'])) ? 'style/Xbtit_3.0' : $row['style_url']);
     }
     if (!isset($STYLETYPE) || empty($STYLETYPE)) {
         $STYLETYPE = ((is_null($row['style_type'])) ? 3 : (int) 0 + $row['style_type']);

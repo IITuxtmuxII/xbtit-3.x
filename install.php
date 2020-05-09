@@ -3,7 +3,7 @@
 /////////////////////////////////////////////////////////////////////////////////////
 // xbtit - Bittorrent tracker/frontend
 //
-// Copyright (C) 2004 - 2019  Btiteam
+// Copyright (C) 2004 - 2020  Btiteam
 //
 //    This file is part of xbtit.
 //
@@ -58,10 +58,9 @@ echo '<html xmlns="http://www.w3.org/1999/xhtml">';
 echo '<head>';
 echo '<meta http-equiv="content-type" content="text/html; charset='.(isset($install_lang['charset']) ? $install_lang['charset'] : 'ISO-8859-1').'" />';
 echo '<title>'.$GLOBALS['btit_installer'].'&nbsp;'.$GLOBALS['current_btit_version'].'</title>';
-echo '<link href="style/xbtit_default/css/bootstrap.css" rel="stylesheet">';
-echo '<link href="style/xbtit_default/css/modern.css" rel="stylesheet">';
-echo '<link href="style/xbtit_default/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">';
-echo '<!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script><script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script><![endif]-->';
+echo '<link href="style/Xbtit_Original/css/bootstrap.css" rel="stylesheet">';
+echo '<link href="style/Xbtit_Original/css/modern.css" rel="stylesheet">';
+echo '<link href="style/Xbtit_Original/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">';
 echo '</head>';
 echo '<body>';
 echo '<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">';
@@ -108,7 +107,7 @@ function load_lang_file()
         echo '<head>';
         echo '<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />';
         echo '<title>'.$GLOBALS['btit_installer'].'&nbsp;'.$GLOBALS['current_btit_version'].' - Language Error</title>';
-        echo '<link rel="stylesheet" href="style/xbtit_default/main.css" type="text/css" />';
+        echo '<link rel="stylesheet" href="style/Xbtit_Original/main.css" type="text/css" />';
         echo '</head>';
         echo '<body style="font-family: sans-serif;"><div style="width: 600px;">';
         echo '<p>A critical language error has occurred.</p>';

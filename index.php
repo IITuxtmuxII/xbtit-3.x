@@ -3,7 +3,7 @@
 /////////////////////////////////////////////////////////////////////////////////////
 // xbtit - Bittorrent tracker/frontend
 //
-// Copyright (C) 2004 - 2019  Btiteam
+// Copyright (C) 2004 - 2020  Btiteam
 //
 //    This file is part of xbtit.
 //
@@ -47,7 +47,7 @@ define('IN_BTIT', true);
 include $THIS_BASEPATH.'/btemplate/bTemplate.php';
 require $THIS_BASEPATH.'/include/functions.php';
 
-    session_id("xbtit");
+    session_name("xbtit");
 
     if(!isset($_SESSION)) {
         session_start();
