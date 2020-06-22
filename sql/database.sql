@@ -985,17 +985,15 @@ CREATE TABLE `{$db_prefix}style` (
 
 INSERT INTO `xbtit_style` (`id`, `style`, `style_url`, `style_type`) VALUES
 (1, 'Xbtit 3.0', 'style/Xbtit_3.0', 3),
-(2, 'Xbtit Light 3.0', 'style/Xbtit_light_3.0', 3),
-(3, 'Dark Lair 3.0', 'style/darklair_3.0', 3),
-(4, 'Frosted 3.0', 'style/frosted_3.0', 3),
-(5, 'Mint 3.0', 'style/mintgreen_3.0', 3),
-(6, 'Yellow Jacket 3.0', 'style/thehive_3.0', 3),
-(7, 'Xbtit Light 2.0', 'style/Xbtit_light_2.0', 3),
-(8, 'Dark Lair 2.0', 'style/darklair_2.0', 3),
-(9, 'Frosted 2.0', 'style/frosted_2.0', 3),
-(10, 'Mint 2.0', 'style/mintgreen_2.0', 3),
-(11, 'Yellow Jacket 2.0', 'style/thehive_2.0', 3),
-(12, 'Holiday Spirit 2.0', 'style/holiday-spirit_2.0', 3);
+(2, 'Dark Lair 3.0', 'style/darklair_3.0', 3),
+(3, 'Frosted 3.0', 'style/frosted_3.0', 3),
+(4, 'Mint 3.0', 'style/mintgreen_3.0', 3),
+(5, 'Yellow Jacket 3.0', 'style/thehive_3.0', 3),
+(6, 'Dark Lair 2.0', 'style/darklair_2.0', 3),
+(7, 'Frosted 2.0', 'style/frosted_2.0', 3),
+(8, 'Mint 2.0', 'style/mintgreen_2.0', 3),
+(9, 'Yellow Jacket 2.0', 'style/thehive_2.0', 3),
+(10, 'Holiday Spirit 2.0', 'style/holiday-spirit_2.0', 3);
 
 -- --------------------------------------------------------
 
