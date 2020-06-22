@@ -45,9 +45,9 @@ require_once 'include'.DIRECTORY_SEPARATOR.'xbtit_version.php';
 global $tracker_version, $tracker_revision;
 
 // getting globals
-$GLOBALS['btit-tracker'] = 'xbtit';
+$GLOBALS['btit-tracker'] = 'xbtit 3.x';
 $GLOBALS['current_btit_version'] = $tracker_version.' (r'.$tracker_revision.')';
-$GLOBALS['btit_installer'] = 'xbtit Installer ::';
+$GLOBALS['btit_installer'] = 'xbtit 3.x Installer ::';
 
 // getting needed files
 load_lang_file();
@@ -59,14 +59,14 @@ echo '<head>';
 echo '<meta http-equiv="content-type" content="text/html; charset='.(isset($install_lang['charset']) ? $install_lang['charset'] : 'ISO-8859-1').'" />';
 echo '<title>'.$GLOBALS['btit_installer'].'&nbsp;'.$GLOBALS['current_btit_version'].'</title>';
 echo '<link href="style/Xbtit_Original/css/bootstrap.css" rel="stylesheet">';
-echo '<link href="style/Xbtit_Original/css/modern.css" rel="stylesheet">';
-echo '<link href="style/Xbtit_Original/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">';
+echo '<link href="style/Xbtit_3.0/css/modern.css" rel="stylesheet">';
+echo '<link href="style/Xbtit_3.0/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">';
 echo '</head>';
 echo '<body>';
 echo '<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">';
 echo '<div class="container">';
 echo '<div class="navbar-header">';
-echo '<a class="navbar-brand" href="index.php">XBTIT</a>';
+echo '<a class="navbar-brand" href="index.php">xbtit 3.x</a>';
 echo '</div>';
 echo '<div class="container">';
 echo '</nav>';
@@ -74,7 +74,7 @@ echo '<div class="row">';
 //echo ("<div class=\"col-md-8\">");
 echo '<div class="panel panel-default">';
 echo '<div class="panel-heading">';
-echo '<h4><i class="fa fa-fw fa-cogs"></i>XBTIT Installation</h4>';
+echo '<h4><i class="fa fa-fw fa-cogs"></i>xbtit 3.x Installation</h4>';
 echo '</div>';
 echo '<div class="panel-body" align="center">';
 
@@ -107,14 +107,14 @@ function load_lang_file()
         echo '<head>';
         echo '<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />';
         echo '<title>'.$GLOBALS['btit_installer'].'&nbsp;'.$GLOBALS['current_btit_version'].' - Language Error</title>';
-        echo '<link rel="stylesheet" href="style/Xbtit_Original/main.css" type="text/css" />';
+        echo '<link rel="stylesheet" href="style/Xbtit_3.0/main.css" type="text/css" />';
         echo '</head>';
         echo '<body style="font-family: sans-serif;"><div style="width: 600px;">';
         echo '<p>A critical language error has occurred.</p>';
         echo "<p>This installer was unable to find the installer's language file or files.  They should be found under:</p>";
         echo '<div style="margin: 1ex; font-family: monospace; font-weight: bold;">/language/install_lang/</div>';
         echo '<p>In some cases, FTP clients do not properly upload files with this many folders.  Please double check to make sure you <span style="font-weight: 600;">have uploaded all the files in the distribution</span>.</p>';
-        echo '<p>If you continue to get this error message, feel free to <a href="http://www.btiteam.org/smf/index.php/">look to us for support</a>.</p>';
+        echo '<p>If you continue to get this error message, feel free to <a href="https://www.btiteam.eu/index.php/">look to us for support</a>.</p>';
         echo '</div>';
         die;
     }

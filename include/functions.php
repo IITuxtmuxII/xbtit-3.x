@@ -260,7 +260,6 @@ function check_online($session_id, $location)
 {
     global $TABLE_PREFIX, $CURUSER;
 
-   session_name('xbtit');
 
     session_start();
 
@@ -458,7 +457,6 @@ function logincookie($row, $user, $expires = 0x7fffffff)
 
             setcookie("$my_cookie_name", "$final_cookie", $my_cookie_expire, "$my_cookie_path", "$my_cookie_domain");
         } else {
-            session_name('xbtit');
             session_start();
             $_SESSION['login_cookie'] = $final_cookie;
         }
@@ -479,7 +477,7 @@ function logoutcookie()
     setcookie('pass', '', (time() - 3600), '/');
     setcookie("$my_cookie_name", '', (time() - 3600), "$my_cookie_path", "$my_cookie_domain");
     setcookie("$my_cookie_name", '', (time() - 3600), '/');
-    session_name('xbtit');
+
     session_start();
     $_SESSION = [];
     setcookie('xbtit', '', time() - 3600, '/');
@@ -497,7 +495,6 @@ function userlogin()
 
     unset($GLOBALS['CURUSER']);
 
-    session_name('xbtit');
 
     $ip = getip(); //$_SERVER["REMOTE_ADDR"];
     $nip = ip2long($ip);

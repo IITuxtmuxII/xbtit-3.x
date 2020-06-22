@@ -1,5 +1,5 @@
 #--------------------------#
-# Welcome to the xbtit v.2 #
+# Welcome to the xbtit v.3 #
 #--------------------------#
 Just a few words about this piece of script and some credits ;)
 
@@ -42,14 +42,8 @@ The opensource free support forum is http://www.btiteam.org
 # REQUIREMENTS #
 #--------------#
 - Web server with Apache or Lighttp installed and running
-- PHP 4.3 or higher (If you use php 4, you'll have to rename the phpmailer's folder phpmailer->phpmailer5 and phpmailer4->phpmailer)
-- Mysql 4.1 or higher
-
-#----------------#
-# DOCUMENTATION  #
-#----------------#
-We are working on a wiki which will give information, installation steps, how to, etc ...
-at the moment it is a "work in progress" site: http://wiki.btiteam.org
+- PHP 7.2 or higher (If you use php 4, you'll have to rename the phpmailer's folder phpmailer->phpmailer5 and phpmailer4->phpmailer)
+- Mysql 5.7 or higher
 
 #---------#
 # CREDITS #
@@ -63,7 +57,7 @@ We aimed to make a nice user interface and a good admin tool at the same time. S
 - torrenttrader (http://www.torrentrader.org)
 - bytemoonsoon (deadlink)
 - Tbdev: CoLdFuSiOn (http://www.tbdev.net)
-- xbtt: Olaf van der Spek (http://xbtt.sourceforge.net)
+- xbtt: Olaf van der Spek (https://github.com/OlafvdSpek/xbt)
 - phpmailer (http://sourceforge.net/projects/phpmailer)
 - smf (http://www.simplemachines.org/)
 - bTemplate: Brian Lozier (http://www.massassi.com/bTemplate)

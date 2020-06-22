@@ -47,7 +47,6 @@ define('IN_BTIT', true);
 include $THIS_BASEPATH.'/btemplate/bTemplate.php';
 require $THIS_BASEPATH.'/include/functions.php';
 
-    session_name("xbtit");
 
     if(!isset($_SESSION)) {
         session_start();
