@@ -898,7 +898,7 @@ CREATE TABLE `{$db_prefix}settings` (
 -- 
 
 INSERT INTO `{$db_prefix}settings` (`key`, `value`) VALUES
-('name', 'BTI-Tracker'),
+('name', 'xbtit 3.0'),
 ('url', 'http://127.0.0.1/dev'),
 ('announce', 'YToxOntpOjA7czoyOToiaHR0cDovL2xvY2FsaG9zdC9hbm5vdW5jZS5waHAiO30='),
 ('email', 'admin@localhost'),
