@@ -39,7 +39,6 @@ else
     {
     //lastest member
 
-     block_begin ("Latest Member");
      $a = get_result("SELECT id,username FROM {$TABLE_PREFIX}users WHERE
      id_level<>1 AND id_level<>2 ORDER BY id DESC LIMIT 1",true,$btit_settings['cache_duration']);
      if($a){

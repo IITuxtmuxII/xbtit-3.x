@@ -39,8 +39,6 @@ else
     {
   global $BASEURL, $STYLEPATH, $dblist, $XBTT_USE,$btit_settings;
 
-  block_begin('LAST_TORRENTS');
-
   ?>
   <table cellpadding="4" cellspacing="1" width="100%">
   <?php
@@ -159,7 +157,7 @@ if (max(0,$CURUSER["WT"])>0)
 
   print("\n</table>");
 
-  block_end();
+  
 
 } // end if user can view
 ?>

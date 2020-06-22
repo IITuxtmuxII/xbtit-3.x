@@ -38,7 +38,6 @@ if (!$CURUSER || $CURUSER["view_users"]=="no")
 else
     {
 
-     //block_begin("Online Users");
      print("\n<table class=\"lista\" width=\"100%\">\n");
 
      $u_online=array();
@@ -73,7 +72,7 @@ else
 
 
      //print($print. $gueststr . ($guest_num>0 && $regusers>0?" ".$language["WORD_AND"]." ":"") . ($regusers>0?"$regusers ".($regusers>1?$language["MEMBERS"]:$language["MEMBER"])."): ":")") . $users ."\n</td></tr>");
-     block_end();
+     
      print("</table>\n");
 } // end if user can view
 ?>

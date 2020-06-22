@@ -48,7 +48,6 @@ else
 
    if (count($row)>0)
      {
-       block_begin("Seeder Wanted");
 
        ?>
        <table cellpadding="4" cellspacing="1" width="100%">
@@ -149,7 +148,7 @@ else
 
        print("</table>");
 
-       block_end();
+       
     }
     else
       echo "<table class=\"lista\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" align=\"center\"><tr><td><div align=\"center\" style=\"text-align: center;\">".$language["NO_TORRENTS"]."</div></td></tr></table>";

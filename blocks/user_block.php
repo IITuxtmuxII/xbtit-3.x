@@ -34,8 +34,6 @@ global $CURUSER, $user, $USERLANG, $FORUMLINK, $db_prefix,$btit_settings, $ipb_p
 
 require_once(load_language("lang_account.php"));
 
-         block_begin('".BLOCK_USER."');
-
          if (!$CURUSER || $CURUSER["id"]==1)
             {
             // guest-anonymous, login require
@@ -103,5 +101,5 @@ require_once(load_language("lang_account.php"));
 
              print("</table>\n</form>");
              }
-         block_end();
+         
 ?>

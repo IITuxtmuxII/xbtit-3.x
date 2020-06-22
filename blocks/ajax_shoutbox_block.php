@@ -43,8 +43,6 @@
   #
   #################################################################
 
-
-block_begin('SHOUTBOX');
     
   if ($CURUSER["uid"] > 1)
     {
@@ -136,5 +134,5 @@ else
     print("<div align=\"center\">\n
            <br />".$language["ERR_MUST_BE_LOGGED_SHOUT"]."</div>");
 
-    block_end();
+    
 ?>

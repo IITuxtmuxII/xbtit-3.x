@@ -39,7 +39,6 @@ if ($GLOBALS["ajax_poller"])
   if (!$CURUSER || $CURUSER["view_users"]=="yes")
     {
       print("<a name=\"poll\" /></a>");
-      block_begin('".LATEST_POLL."');
   ?>
   <table border="0" class="block" cellspacing="0" cellpadding="0" width="100%"><tr><td align="center">
   <form action="<?php echo $_SERVER['PHP_SELF']; ?>" onsubmit="return false" method="post" name="poller">
@@ -119,7 +118,7 @@ if ($GLOBALS["ajax_poller"])
   </form>
   </td></tr></table>
       <?php
-      block_end();
+      
     }
 
 }
@@ -137,7 +136,6 @@ dbconn();
 if($result){
      $res2=mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM {$TABLE_PREFIX}poll_voters WHERE pid='$pid'") or die(((is_object($GLOBALS["___mysqli_ston"])) ? mysqli_error($GLOBALS["___mysqli_ston"]) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)));
      $question=$result["poll_question"];
-     block_begin("Poll: $question");
      print("<tr><td class=blocklist align=center>\n");
      print("<table cellspacing=2 cellpading=2>\n");
 if(!isset ($CURUSER)) global $CURUSER;
@@ -241,7 +239,7 @@ if(isset($_POST['submit']) && $_POST['submit'] == 'Submit' && isset($_POST['poll
 
 
      print("</table>\n</td></tr>");
-     block_end();
+     
 }
 
 }

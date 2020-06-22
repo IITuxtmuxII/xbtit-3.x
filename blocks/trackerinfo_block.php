@@ -39,7 +39,6 @@ else
     {
    global $SITENAME, $XBTT_USE;
 
-   block_begin('".BLOCK_INFO."');
    if ($XBTT_USE)
       $res=get_result("select count(*) as tot, sum(f.seeds)+sum(ifnull(x.seeders,0)) as seeds, sum(f.leechers)+sum(ifnull(x.leechers,0)) as leechs  FROM {$TABLE_PREFIX}files f LEFT JOIN xbt_files x ON f.bin_hash=x.info_hash",true,$btit_settings['cache_duration']);
    else
@@ -94,7 +93,7 @@ else
    print("<tr><td align=\"left\" class=\"lista\" style=\"border-bottom: solid 1px #9BAEBF;width:70%;\">".$language["TRAFFIC"].":</td><td align=\"right\" class=\"lista\" style=\"border-bottom: solid 1px #9BAEBF;width:30%;\">$traffic</td></tr>\n");
    print("</table>\n");
 //   print("</table>\n</td></tr>");
-//   block_end();
+//   
 
 } // end if user can view
 ?>
