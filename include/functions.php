@@ -76,28 +76,6 @@ if ($php_version[0] <= 5 && $php_version[1] <= 2) {
     }
 }
 
-// control if magic_quote_gpc = on
-if (get_magic_quotes_gpc()) {
-    // function which remove unwanted slashes
-    function remove_magic_quotes(&$array)
-    {
-        foreach ($array as $key => $val) {
-            if (is_array($val)) {
-                remove_magic_quotes($array[$key]);
-            } elseif (is_string($val)) {
-                $array[$key] = str_replace(['\\\\', '\\\"', "\'"], ['\\', '\"', "'"], $val);
-            }
-        }
-    }
-
-    remove_magic_quotes($_POST);
-    remove_magic_quotes($_GET);
-    remove_magic_quotes($_REQUEST);
-    remove_magic_quotes($_SERVER);
-    remove_magic_quotes($_FILES);
-    remove_magic_quotes($_COOKIE);
-}
-
 @date_default_timezone_set(@date_default_timezone_get());
 
 include $CURRENTPATH.'/xbtit_version.php';
