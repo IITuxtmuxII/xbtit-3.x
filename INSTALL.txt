@@ -1,6 +1,6 @@
-www.xbtit.com making it easy to own a tracker, my cat has a tracker and she is no PHP guru ...
+www.btiteam.eu making it easy to own a tracker.
 
-here are some pointers for novice and expert alike. first decide what you want:
+Here are some pointers for novice and expert alike. first decide what you want:
 
 QUESTION: internal PHP tracker or xbtt?
 xbtt is recommended but you need root access to your server. the PHP tracker can handle 5-10,000 peers but creates a high volume of hits on your webserver. if you intend in time to migrate to xbtt then START with xbtt (those legacy PHP torrents will be a burden on your server for as long as they live, think about it)

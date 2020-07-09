@@ -69,7 +69,7 @@ if ($CURUSER['view_users'] == 'no') {    // start 'view_users'
         $where = '';
     }
 
-    $level = ((int) 0 + $_GET['level']);
+    $level = isset($_GET["level"]) ? (int)$_GET["level"] : 0 ;
     if ($level > 0) {
         $where .= " AND u.id_level=$level";
         if ($addparams != '') {

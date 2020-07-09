@@ -104,8 +104,8 @@
   <div id="footer">
        <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0">
          <tr>
-  <td align="center" valign="bottom"><br /><br /><tag:style_copyright />&nbsp;<tag:Xbtit_3.0_version /><br />
-         <tag:Xbtit_3.0_debug /></td>
+  <td align="center" valign="bottom"><br /><br /><tag:style_copyright />&nbsp;<tag:xbtit_version /><br />
+         <tag:xbtit_debug /></td>
         </tr><tr>
                 <td class="footer" align="center" valign="bottom"><br /><tag:to_top /></td>
          </table>

@@ -85,7 +85,7 @@ function smile()
     reset($smilies);
   
     # getting smilies
-    while (list($code, $url) = each($smilies)) {
+    foreach ($smilies as $code => $url) {
         print("\n<a href=\"javascript: SmileIT('".str_replace("'", "\'", $code)."')\">
                <img border=\"0\" src=\"images/smilies/$url\" alt=\"$code\" /></a>");
  
@@ -277,11 +277,11 @@ function getData($lastID)
     # getting the data array
     while ($row = mysqli_fetch_array($results)) {
         # creating and naming array
-        $id   = $row[id];
-        $uid  = $row[uid];
-        $time = $row[time];
-        $name = $row[name];
-        $text = $row[text];
+        $id   = $row["id"];
+        $uid  = $row["uid"];
+        $time = $row["time"];
+        $name = $row["name"];
+        $text = $row["text"];
         
         # if no name is present somehow, $name and $text are set to the strings under
         # we assume all must be ok, othervise no post will be made by javascript check
