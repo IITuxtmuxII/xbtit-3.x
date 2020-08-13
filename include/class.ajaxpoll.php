@@ -52,9 +52,9 @@ class poll
 
     public function getDataById($id)
     {
-        $res = do_sqlquery('select * from '.$this->table_prefix."poller where ID='$id'");
+        $res = do_sqlquery('SELECT * FROM '.$this->table_prefix."poller WHERE ID = '$id'");
         if ($inf = mysqli_fetch_array($res)) {
-            $this->ID = $inf['ID'];
+            $this->ID = (int)$inf['ID'];
             $this->pollerTitle = $inf['pollerTitle'];
             $this->active = $inf['active'];
         }
@@ -64,9 +64,9 @@ class poll
     public function getOptionsAsArray()
     {
         $retArray = [];
-        $res = do_sqlquery('select * from '.$this->table_prefix."poller_option where pollerID='".$this->ID."' order by pollerOrder");
+        $res = do_sqlquery('SELECT * FROM '.$this->table_prefix."poller_option WHERE pollerID = '".$this->ID."' ORDER BY pollerOrder");
         while ($inf = mysqli_fetch_array($res)) {
-            $retArray[$inf['ID']] = [$inf['optionText'], $inf['pollerOrder']];
+            $retArray[$inf['ID']] = [$inf['optionText'], (int)$inf['pollerOrder']];
         }
 
         return $retArray;
@@ -76,9 +76,9 @@ class poll
     public function getVotesAsArray()
     {
         $retArray = [];
-        $res = do_sqlquery('select v.optionID,count(v.ID) as countVotes from '.$this->table_prefix.'poller_vote v,'.$this->table_prefix."poller_option o where v.optionID = o.ID and o.pollerID = '".$this->ID."' group by v.optionID");
+        $res = do_sqlquery('SELECT v.optionID, COUNT(v.ID) AS countVotes FROM '.$this->table_prefix.'poller_vote v, '.$this->table_prefix."poller_option o WHERE v.optionID = o.ID AND o.pollerID = '".$this->ID."' GROUP BY v.optionID");
         while ($inf = mysqli_fetch_array($res)) {
-            $retArray[$inf['optionID']] = $inf['countVotes'];
+            $retArray[$inf['optionID']] = (int)$inf['countVotes'];
         }
 
         return $retArray;
@@ -87,13 +87,11 @@ class poll
     /* Create new poller and return ID of new poller */
     public function createNewPoller($pollerTitle, $userid, $active)
     {
-        $pollerTitle = mysqli_real_escape_string($GLOBALS['conn'], $pollerTitle);
-
         if ($active == 'yes') {
-            quickQuery('UPDATE '.$this->table_prefix."poller SET active='no', endDate=UNIX_TIMESTAMP() WHERE poller.active='yes'");
-            quickQuery('insert into '.$this->table_prefix."poller(pollerTitle,starterID,active,startDate)values('$pollerTitle','$userid','yes',UNIX_TIMESTAMP())") or die(((is_object($GLOBALS['conn'])) ? mysqli_error($GLOBALS['conn']) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)));
+            quickQuery('UPDATE '.$this->table_prefix."poller SET active = 'no', endDate = UNIX_TIMESTAMP() WHERE poller.active = 'yes'");
+            quickQuery('INSERT INTO '.$this->table_prefix."poller(pollerTitle, starterID, active, startDate) VALUES(".sqlesc($pollerTitle).", '".$userid."', 'yes', UNIX_TIMESTAMP())") or die(((is_object($GLOBALS['conn'])) ? mysqli_error($GLOBALS['conn']) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)));
         } elseif ($active == 'no') {
-            quickQuery('insert into '.$this->table_prefix."poller(pollerTitle,endDate,starterID,active,startDate)values('$pollerTitle',UNIX_TIMESTAMP(),'$userid','no',UNIX_TIMESTAMP())") or die(((is_object($GLOBALS['conn'])) ? mysqli_error($GLOBALS['conn']) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)));
+            quickQuery('INSERT INTO '.$this->table_prefix."poller(pollerTitle, endDate, starterID, active, startDate) VALUES(".sqlesc($pollerTitle).", UNIX_TIMESTAMP(), '".$userid."', 'no', UNIX_TIMESTAMP())") or die(((is_object($GLOBALS['conn'])) ? mysqli_error($GLOBALS['conn']) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)));
         }
 
         $this->ID = ((is_null($___mysqli_res = mysqli_insert_id($GLOBALS['conn']))) ? false : $___mysqli_res);
@@ -104,8 +102,7 @@ class poll
     /* Add poller options */
     public function addPollerOption($optionText, $pollerOrder)
     {
-        $optionText = mysqli_real_escape_string($GLOBALS['conn'], $optionText);
-        quickQuery('insert into '.$this->table_prefix."poller_option(pollerID,optionText,pollerOrder)values('".$this->ID."','".$optionText."','".$pollerOrder."')") or die(((is_object($GLOBALS['conn'])) ? mysqli_error($GLOBALS['conn']) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)));
+        quickQuery('INSERT INTO '.$this->table_prefix."poller_option(pollerID, optionText, pollerOrder) VALUES('".$this->ID."', ".sqlesc($optionText).", '".$pollerOrder."')") or die(((is_object($GLOBALS['conn'])) ? mysqli_error($GLOBALS['conn']) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)));
 
         return (is_null($___mysqli_res = mysqli_insert_id($GLOBALS['conn']))) ? false : $___mysqli_res;
     }
@@ -113,42 +110,40 @@ class poll
     /* Delete a poll, options in the poll and votes */
     public function deletePoll($pollId)
     {
-        quickQuery('delete from '.$this->table_prefix."poller where ID='$pollId'");
-        $res = do_sqlquery('select * from '.$this->table_prefix."poller_option where pollerID='".$pollId."'");
+        quickQuery('DELETE FROM '.$this->table_prefix."poller WHERE ID = '".$pollId."'");
+        $res = do_sqlquery('SELECT * FROM '.$this->table_prefix."poller_option WHERE pollerID = '".$pollId."'");
         while ($inf = mysqli_fetch_array($res)) {
-            quickQuery('delete from '.$this->table_prefix."poller_vote where optionID='".$inf['ID']."'");
-            quickQuery('delete from '.$this->table_prefix."poller_option where ID='".$inf['ID']."'");
+            quickQuery('DELETE FROM '.$this->table_prefix."poller_vote WHERE optionID = ".sqlesc($inf['ID']));
+            quickQuery('DELETE FROM '.$this->table_prefix."poller_option WHERE ID = ".sqlesc($inf['ID']));
         }
     }
 
     /* Updating poll title */
     public function setPollerTitle($pollerTitle)
     {
-        $pollerTitle = mysqli_real_escape_string($GLOBALS['conn'], $pollerTitle);
-        quickQuery('update '.$this->table_prefix."poller set pollerTitle='$pollerTitle' where ID='".$this->ID."'");
+        quickQuery('UPDATE '.$this->table_prefix."poller SET pollerTitle = ".sqlesc($pollerTitle)." WHEER I D = ".sqlesc($this->ID));
     }
 
     public function setPollerActive($pollerActive)
     {
         if ($pollerActive == 'yes') {
-            quickQuery('UPDATE '.$this->table_prefix."poller SET endDate=UNIX_TIMESTAMP(), active='no' WHERE poller.active='yes'");
+            quickQuery('UPDATE '.$this->table_prefix."poller SET endDate = UNIX_TIMESTAMP(), active='no' WHERE poller.active='yes'");
         }
-        quickQuery('UPDATE '.$this->table_prefix."poller SET endDate='0', active='$pollerActive' WHERE ID='".$this->ID."'");
+        quickQuery('UPDATE '.$this->table_prefix."poller SET endDate = '0', active = '".$pollerActive."' WHERE ID = ".sqlesc($this->ID));
     }
 
     /* Update option label */
     public function setOptionData($newText, $order, $optionId)
     {
-        $newText = mysqli_real_escape_string($GLOBALS['conn'], $newText);
-        quickQuery('update '.$this->table_prefix."poller_option set optionText='".$newText."',pollerOrder='$order' where ID='".$optionId."'");
+        quickQuery('UPDATE '.$this->table_prefix."poller_option SET optionText = ".sqlesc($newText).", pollerOrder = '".$order."' WHERE ID = '".$optionId."'");
     }
 
     /* Get position of the last option, i.e. to append a new option at the bottom of the list */
     public function getMaxOptionOrder()
     {
-        $res = do_sqlquery('select max(pollerOrder) as maxOrder from '.$this->table_prefix."poller_option where pollerID='".$this->ID."'") or die(((is_object($GLOBALS['conn'])) ? mysqli_error($GLOBALS['conn']) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)));
+        $res = do_sqlquery('SELECT MAX(pollerOrder) AS maxOrder FROM '.$this->table_prefix."poller_option WHERE pollerID = ".sqlesc($this->ID)) or die(((is_object($GLOBALS['conn'])) ? mysqli_error($GLOBALS['conn']) : (($___mysqli_res = mysqli_connect_error()) ? $___mysqli_res : false)));
         if ($inf = mysqli_fetch_array($res)) {
-            return $inf['maxOrder'];
+            return (int)$inf['maxOrder'];
         }
 
         return 0;
