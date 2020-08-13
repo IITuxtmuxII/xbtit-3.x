@@ -813,10 +813,10 @@ function getagent($httpagent, $peer_id = '')
     if (substr($peer_id, 0, 2) == 'eX') {
         return 'eXeem'; // eXeem beta .21
     }
-    if (substr($peer_id, 0, 12) == (chr(0) * 12) && $peer_id[12] == chr(97) && $peer_id[13] == chr(97)) {
+    if (substr($peer_id, 0, 12) == ((int)chr(0) * 12) && $peer_id[12] == chr(97) && $peer_id[13] == chr(97)) {
         return 'Experimental 3.2.1b2'; // Experimental 3.2.1b2
     }
-    if (substr($peer_id, 0, 12) == (chr(0) * 12) && $peer_id[12] == chr(0) && $peer_id[13] == chr(0)) {
+    if (substr($peer_id, 0, 12) == ((int)chr(0) * 12) && $peer_id[12] == chr(0) && $peer_id[13] == chr(0)) {
         return 'Experimental 3.1'; // Experimental 3.1
     }
 
